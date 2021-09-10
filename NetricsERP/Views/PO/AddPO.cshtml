@@ -1,0 +1,412 @@
+﻿@model ERPProject.Models.PO
+
+@{
+    ViewBag.Title = "AddPO";
+}
+
+
+<div class="col-12">
+    <div class="card">
+@using (Html.BeginForm("AddPO", "PO", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-horizontal">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">PO No</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.PoNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PoNumber)
+                </div>
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">PO Date</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.poDate, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.poDate)
+                </div>
+                @*<div class="col-sm-1">
+
+                </div>*@
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Customer Name</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.custId, ERPProject.Models.DropDownlist.GetAll("Customer"), "-- Please Select --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.custId)
+                </div>
+                
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Product Type</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.productId, ERPProject.Models.DropDownlist.GetAll("Customer"), "-- Please Select --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.productId)
+                </div>
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Process</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.processId, ERPProject.Models.DropDownlist.GetAll("Customer"), "-- Please Select --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.processId)
+                </div>
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Quantity</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.quantity, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.quantity)
+                </div>
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Rate</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.Rate, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rate)
+                </div>
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Wastage%</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.wasteagepercent, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.wasteagepercent)
+                </div>
+                <div class="col-sm-2">
+                    <label for="lname" class="text-right control-label col-form-label">Remarks</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.remarks, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.remarks)
+                </div>
+                
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">Attachment</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="file" name="PO" id="iFile2" onchange="validateFile2(this);" />
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"></div>
+                <div class="col-2"></div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success" onclick="return ValidateSearchForm();">Submit</button>   <button type="button" class="btn btn-warning" onclick="ResetForm();">Reset</button>
+                </div>
+            </div>
+        </div>
+           
+
+</form>
+
+        }
+</div>
+    </div>
+
+<div class="alert-danger">
+    <p style="text-align:center;font-size:large;">
+        ADD PO Size and Quality Details
+    </p>
+</div>
+<div class="col-12">
+    <div class="card">
+        @using (Html.BeginForm("PODetails", "PO", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <form>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="lname" class="text-right control-label col-form-label">Customer</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.custId, ERPProject.Models.DropDownlist.GetAll("Customer"), "-- Please Select --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.custId)
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="CustomerName" class="text-right control-label col-form-label">PO Number</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.poId, ERPProject.Models.DropDownlist.GetAll("PO"), "-- Please Select --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.poId)
+                        </div>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><label for="Size" class="text-right control-label col-form-label">Size</label></div>
+                        <div class="col-sm-2">@Html.TextBoxFor(m=>m.sizes,new { @class = "form-control" })</div>
+                        <div class="col-sm-2"><label for="quality" class="text-right control-label col-form-label">Quality</label></div>
+                        <div class="col-sm-2">@Html.TextBoxFor(m=>m.quality,new { @class= "form-control" }) </div>
+                        <div class="col-sm-2"><label for="QualityUnit" class="text-right control-label col-form-label">Unit</label></div>
+                        <div class="col-sm-2">@Html.DropDownListFor(m => m.qualityUnit, ERPProject.Models.DropDownlist.GetAll("QualityUnit"), "-- Please Select --", new { @class = "form-control" })</div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><label for="Color" class="text-right control-label col-form-label">Color</label></div>
+                        <div class="col-sm-2">@Html.TextBoxFor(m => m.color, new { @class = "form-control" })</div>
+                        <div class="col-sm-2"><label for="Design" class="text-right control-label col-form-label">Design</label></div>
+                        <div class="col-sm-2">@Html.TextBoxFor(m => m.design, new { @class = "form-control" })</div>
+                        <button type="submit" class="btn btn-success" onclick="return ValidateSearchForm();">Submit</button>   <button type="button" class="btn btn-warning" onclick="ResetForm();">Reset</button>
+                    </div>
+                </div>
+            </form>
+
+
+        }
+    </div>
+
+    </div>
+
+
+        @*<div class="content-block" id="contact">
+                <div class="overlay-3">
+                    <header class="block-heading cleafix text-center">
+                        <h1 style="margin-top: 30px; color: #dd4814;">ADD PO</h1>
+                        <!-- <p>Feel Free to Contact</p> -->
+                    </header>
+                    <div class="block-content text-center">
+                        <div class="form-container">
+                            <div class="form-input">
+                                <div class="wow animated fadeInLeft">
+                                    @using (Html.BeginForm("AddPO", "PO", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(false)
+                                        @Html.HiddenFor(model=>model.poId)
+                                        <fieldset>
+                                            <table cellpadding="5" cellspacing="5" class="contact-form">
+                                                <tr>
+
+                                                    <td>@Html.Label("PO Number")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.PoNumber, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.PoNumber, "*")
+                                                    </td>
+                                                    <td>@Html.Label("PO Date")  </td>
+                                                    <td width="10%">
+                                                        @Html.TextBoxFor(model => model.poDate, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.poDate, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Customer Name")  </td>
+                                                    <td>
+                                                        @Html.DropDownListFor(model => model.custId, ERPProject.Models.DropDownlist.GetAll("Customer"), "-- Please Select --", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.custId, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Product Type")</td>
+                                                    <td>
+                                                        @Html.DropDownListFor(model => model.productId, ERPProject.Models.DropDownlist.GetAll("ProductType"), "-- Please Select --", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.productId, "*")
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.Label("Process")</td>
+                                                    <td>
+                                                        @Html.DropDownListFor(model => model.processId, ERPProject.Models.DropDownlist.GetAll("ProcessType"), "-- Please Select --", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.processId, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Size")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.sizes, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.sizes, "*")
+                                                    </td>
+
+                                                    <td>@Html.Label("Qaulity Value")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.quality, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.quality, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Quality Unit")</td>
+                                                    <td>
+                                                        @Html.DropDownListFor(model => model.qualityUnit, ERPProject.Models.DropDownlist.GetAll("QualityUnit"), "-- Please Select --", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.qualityUnit, "*")
+                                                    </td>
+
+
+
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.Label("Qauntity")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.quantity, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.quantity, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Units")</td>
+                                                    <td>
+                                                        @Html.DropDownListFor(model => model.units, ERPProject.Models.DropDownlist.GetAll("Units"), "-- Please Select --", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.units, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Rate per Lbs/Kg/Mtr")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.Rate, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Rate, "*")
+                                                    </td>
+                                                    <td>@Html.Label("Wasteage%")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.wasteagepercent, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.wasteagepercent, "*")
+                                                    </td>
+
+
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.Label("Remarks")</td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.remarks, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.remarks, "*")
+                                                    </td>
+                                                    <td class="col-sm-1">
+                                                        <label for="fname" class="text-left control-label col-form-label">Attachment</label>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input type="file" name="PO" id="iFile2" onchange="validateFile2(this);" />
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="4"><hr /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">
+                                                        <input id="btnReset" type="reset" value="Reset" onclick="location.href='@Url.Action("ResetForm", "PO")'">
+                                                        <input id="btnSubmit" type="submit" value="@ViewBag.SubmitValue" onclick=" return setSelectedText(); ClearSession();">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>	<!-- block-content -->
+                </div>	<!-- overlay-3 -->
+            </div>*@
+
+        <script>
+
+            $(document).ready(function () {
+                alert("Pakistan!");
+                $("#custId").on('change', function () {
+                    debugger;
+                    $("#poId > option").remove();
+                    $("#poId").append($('<option></option>').val('').html('-- Please Select --'));
+                    getPO($("#custId").val());
+                });
+                function getPO(id) {
+                    var args = '"custId":' + '"' + (id == "" ? 0 : id) + '"';
+                    var loc = '/Common/GetPo';
+
+                    $.ajax({
+                        type: 'POST',
+                        url: loc,
+                        data: '{' + args + '}',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (response) {
+                            BindPo(response)
+                        },
+                        fail: function () { }
+                    });
+
+                }
+
+                function BindPo(response) {
+                    var po = (typeof response.lstPO) == 'string' ? eval('(' + response.lstPO + ')') : response.lstPO;
+
+                    $("#poId > option").remove();
+                    $("#poId").append($('<option></option>').val('').html('-- Please Select --'));
+                    if (po != null) {
+                        for (var i = 0; i < po.length; i++) {
+                            var _val = po[i].Value;
+                            var text = po[i].Text;
+                            $("#poId").append($('<option></option>').val(_val).html(text));
+                        }
+                    }
+
+                }
+            });
+
+            function validateFile1(obj) {
+                debugger;
+                LoadingIcon();
+                var ImgSize = '@Session["ImageSize"]';
+                @*var AudSize = '@Session["AudioSize"]';
+        var VidSize = '@Session["VideoSize"]';*@
+                var fileSize = obj.files[0].size / 1048576;
+                //var fileType = $("#fileType").val();
+
+                if (fileSize > 0 && fileType == "") {
+                    $(".validation-summary-valid  ul").append("<li class='customErr'> <label >File Type is required</label> </li>");
+                    $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                    $("#iFile1").val("");
+                }
+
+                else if (fileSize > 0) {
+                    var file = $("#iFile2").val();
+                    var extension = file.substr((file.lastIndexOf('.') + 1));
+                    var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'tif'];
+                    var errMsg = "";
+                    if ($.inArray(extension.split('.').pop().toLowerCase(), fileExtension) == -1) {
+                        $(".validation-summary-valid  ul").append("<li class='customErr'> <label >Error! Upload the valid file</label> </li>");
+                        $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                        $("#iFile2").val('');
+                    }
+                    else if ((fileSize > ImgSize)) {
+                        $(".validation-summary-valid  ul").append("<li class='customErr'> " + "<label >Image size must be less than " + ImgSize + " MB</label>" + "</li>");
+                        $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                        $("#iFile2").val('');
+                    }
+                    else {
+                        $(".customErr").empty();
+                    }
+                }
+
+                //else if (fileSize > 0 && fileType == 2) {
+                //    {
+                //        var file = $("#iFile1").val();
+                //        var extension = file.substr((file.lastIndexOf('.') + 1));
+                //        var fileExtension = ['mp3'];
+                //        var errMsg = "";
+                //        if ($.inArray(extension.split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //            $(".validation-summary-valid  ul").append("<li class='customErr'> <label >Error! Upload the valid file</label> </li>");
+                //            $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                //            $("#iFile1").val('');
+                //        }
+                //        else if ((fileSize > AudSize)) {
+                //            $("#iFile1").val('');
+                //            $(".validation-summary-valid  ul").append("<li class='customErr'> " + "<label >Audio size must be less than " + AudSize + " MB</label>" + "</li>");
+                //            $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                //        }
+                //        else {
+                //            $(".customErr").empty();
+                //        }
+                //    }
+                //}
+
+                //else if (fileSize > 0 && fileType == 3) {
+
+                //    var file = $("#iFile1").val();
+                //    var extension = file.substr((file.lastIndexOf('.') + 1));
+                //    var fileExtension = ['mp4', 'flv', 'mkv', 'mpg', 'mpeg', 'swf', 'avi', 'wmv', 'mov', 'divx', '3gp'];
+                //    var errMsg = "";
+                //    if ($.inArray(extension.split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //        $(".validation-summary-valid  ul").append("<li class='customErr'> <label >Error! Upload the valid file</label> </li>");
+                //        $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                //        $("#iFile1").val('');
+                //    }
+                //    else if ((fileSize > VidSize)) {
+                //        $("#iFile1").val('');
+                //        $(".validation-summary-valid  ul").append("<li class='customErr'> " + "<label >Video size must be less than " + VidSize + " MB</label>" + "</li>");
+                //        $("#errCase").removeClass('field-validation-valid').addClass('field-validation-error');
+                //    }
+                //    else {
+                //        $(".customErr").empty();
+                //    }
+
+
+                //HideLoadingIcon();
+            }
+        </script>

@@ -1,0 +1,55 @@
+﻿@model ERPProject.Models.purchaseProducts
+@{
+    ViewBag.Title = "ChemRecvEntry";
+}
+
+<h2>Chemical Entry</h2>
+
+<div class="col-12">
+    <div class="card">
+        @using (Html.BeginForm("ChemRecvEntry", "Inventory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <form class="form-horizontal">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="VendorId" class="text-left control-label col-form-label">Vendor</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.vendId, ERPProject.Models.DropDownlist.GetAll("Vendor"), "-- Please Select --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.vendId)
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="RecvDate" class="text-left control-label col-form-label">Revc Date</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.recvDate, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.recvDate)
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="ChallanNum" class="text-left control-label col-form-label">Challan Num</label>
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.challanNum, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.challanNum)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="ChemType" class="text-left control-label col-form-label">Chemical Name</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.CheckBoxFor(model => model.chemType, ERPProject.Models.DropDownlist.GetAll("ChemType"))
+                            @Html.ValidationMessageFor(model => model.chemType)
+                        </div>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+            </form>
+        }
+        
+    </div>
+</div>

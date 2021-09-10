@@ -1,0 +1,314 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .subdetails{display:none;}
+</style>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>
+                Material Entry
+            </h2>
+        </div>
+        <!-- Basic Validation -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card ntr">
+                    <div class="header">
+                        <h2>Bleaching Agent</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:collaps('bleach');" class="" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons bleach-icon">add</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body bleach">
+                        <div class="row">
+                            <form id="form_validation" method="POST">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="bleachs" name="" class="bleach-check">
+                                        <label for="bleachs">Bleach</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-bleachs">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="bleachQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="bleachQuantityinKg" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="caustic" class="bleach-check">
+                                        <label for="caustic">Caustic</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-caustic">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="causticQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="causticQuantityinKg" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="acid" class="bleach-check">
+                                        <label for="acid">Acid</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-acid">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="acidQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="acidQuantityinKg" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card ntr">
+                    <div class="header">
+                        <h2>Processing Material</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:collaps('process');" class="" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons process-icon">add</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body process">
+                        <div class="row">
+                            <form id="form_validation" method="POST">
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="keco" name="" class="bleach-check">
+                                        <label for="keco">Keco</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-keco">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="kecoQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="kecoinKgQuantity" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="cake" class="bleach-check">
+                                        <label for="cake">Cake</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-cake">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="cakeQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="cakein KgQuantity" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="silicon" class="bleach-check">
+                                        <label for="silicon">Silicon</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-silicon">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="siliconQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="siliconinKgQuantity" required>
+                                            <label class="form-label">Quantityin Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="neel" class="bleach-check">
+                                        <label for="neel">Neel</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-neel">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="neelQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="neelinKgQuantity" required>
+                                            <label class="form-label">Quantityin Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="pckeco" class="bleach-check">
+                                        <label for="pckeco">PC Keco</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-pckeco">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="pckecoQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="pckecoinKgQuantity" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card ntr">
+                    <div class="header">
+                        <h2>Others</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:collaps('other');" class="" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons other-icon">add</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body other">
+                        <div class="row">
+                            <form id="form_validation" method="POST">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="wood" name="" class="bleach-check">
+                                        <label for="wood">Wood</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-wood">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="woodinMordQuantity" required>
+                                            <label class="form-label">Quantity in Mord</label>
+                                        </div>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="wooinKgQuantity" required>
+                                            <label class="form-label">Quantity in Kg</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="amri" class="bleach-check">
+                                        <label for="amri">Amri</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-amri">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="amriQuantity" required>
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="amrirubber" class="bleach-check">
+                                        <label for="amrirubber">Amri Rubber</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-amrirubber">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="amrirubberQuantity" required>
+                                            <label class="form-label">Quantity in Meter</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="thread" class="bleach-check">
+                                        <label for="thread">Thread</label>
+                                    </div>
+                                    <div class="form-group subdetails qty-thread">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="threadQuantity" required>
+                                            <label class="form-label">Quantity in Packet</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Validation -->
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            collaps("bleach");
+            
+        });
+        $(".bleach-check").change(function () {
+            idname = $(this).attr('id');
+            if ($(this).prop("checked") == true) {
+                $(".qty-" + idname).css("display", 'block');
+            }
+            else if ($(this).prop("checked") == false) {
+                $(".qty-" + idname).css("display", 'none');
+            }
+        });
+        function collaps(str) {
+            col("bleach", 'close');
+            col("process", 'close');
+            col("other", 'close');
+            col(str, 'open');
+
+        }
+        function col(str, sta) {
+            if (sta == "open") {
+                $("." + str + "-icon").html("remove");
+                $("." + str).css("display", "block");
+            } else if (sta == "close") {
+                $("." + str + "-icon").html("add");
+                $("." + str).css("display", "none");
+            } else {
+                var icon = $("." + str + "-icon").html();
+                if (icon == "add") {
+                    $("." + str + "-icon").html("remove");
+                    $("." + str).css("display", "block");
+                } else if (icon == "remove") {
+                    $("." + str + "-icon").html("add");
+                    $("." + str).css("display", "none");
+                }
+            }
+        }
+    </script>

@@ -1,0 +1,67 @@
+﻿@model ERPProject.Models.vendorDetails
+    @{
+        ViewBag.Title = "AddVendor";
+    }
+
+    <h2>Add Vendor</h2>
+    <div class="col-12">
+        <div class="card">
+@using (Html.BeginForm("AddVendor", "Inventory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-horizontal">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">Vendor Name</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.vendName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.vendName)
+                </div>
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">Address</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.vendAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.vendAddress)
+                </div>
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">Contact Num</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.vendContact, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.vendContact)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label">IsReg</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.CheckBoxFor(model => model.isReg )@*new { @checked = false }*@
+                </div>
+                <div class="col-sm-2">
+                    <label for="fname" class="text-left control-label col-form-label hide">Reg Num</label>
+                </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.regNum, new { @class = "form-control hide" })
+                    @Html.ValidationMessageFor(model => model.regNum)
+                </div>
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-2">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success" onclick="return ValidateSearchForm();">Submit</button>   <button type="button" class="btn btn-warning" onclick="ResetForm();">Reset</button>
+                </div>
+                
+            </div>
+        </div>
+        </form>
+        }
+</div>
+        </div>

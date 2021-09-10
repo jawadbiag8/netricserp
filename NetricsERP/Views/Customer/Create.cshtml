@@ -1,0 +1,60 @@
+﻿@model ERPProject.Models.customerDetails
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="content-block" id="contact">
+    <div class="overlay-3">
+        <header class="block-heading cleafix text-center">
+            <h1 style="margin-top: 30px; color: #dd4814;">ADD CUSTOMER</h1>
+            <!-- <p>Feel Free to Contact</p> -->
+        </header>
+        <div class="block-content text-center">
+            <div class="form-container">
+                <div class="form-input">
+                    <div class="wow animated fadeInLeft">
+                        @using (Html.BeginForm("Create", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(false)
+                            <fieldset>
+                                <table cellpadding="5" cellspacing="5" class="contact-form">
+                                    <tr>
+                                        
+                                        <td>@Html.Label("Customer Name")</td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.custName, new { @maxlength = "20", @class = "textBox" })
+                                            @Html.HiddenFor(model => model.custName)
+                                            @Html.ValidationMessageFor(model => model.custName, "*")
+                                        </td>
+                                        <td >@Html.Label("Customer Address")  </td>
+                                        <td >
+                                            @Html.TextBoxFor(model => model.custAddress, new { @maxlength = "100", @class = "textBox" })
+                                            @Html.ValidationMessageFor(model => model.custAddress, "*")
+                                        </td>
+                                        <td>@Html.Label("Contact")</td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.custContact, new { @maxlength = "20", @class = "textBox" })
+                                            @Html.ValidationMessageFor(model => model.custContact, "*")
+                                        </td>
+                                    </tr>
+                        
+<tr>
+    <td colspan="4"><hr /></td>
+</tr>
+<tr>
+    <td colspan="4">
+        <input id="btnReset" type="reset" value="Reset" onclick="location.href='@Url.Action("ResetForm", "Customer")'">
+        <input id="btnSubmit" type="submit" value="@ViewBag.SubmitValue" onclick=" return setSelectedText(); ClearSession();">
+    </td>
+</tr>
+</table>
+</fieldset>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>	<!-- block-content -->
+    </div>	<!-- overlay-3 -->
+</div>
